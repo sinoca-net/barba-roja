@@ -671,11 +671,12 @@
     "#hero-wa-btn, #main-wa-btn, #float-wa-btn, #nav-wa"
   ).forEach(el => {
     el.href = waURL;
-    el.addEventListener('click', function() {
-      // 🎯 Evento Contact → se dispara cuando alguien hace clic en WhatsApp
-      fbq('track', 'Contact');
-      console.log('✅ Meta Pixel: Contact event fired');
-    });
+   el.addEventListener('click', function() {
+  fbq('track', 'Contact');
+  fbq('track', 'Lead');
+  fbq('trackCustom', 'clickwhatsapp'); // ← AGREGAR ESTA LÍNEA
+  console.log('✅ Meta Pixel: Contact + Lead + clickwhatsapp fired');
+});
   });
 
   // 🎯 Evento ViewContent → se dispara cuando carga la landing
